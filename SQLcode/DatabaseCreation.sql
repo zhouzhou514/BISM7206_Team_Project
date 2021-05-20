@@ -10,7 +10,7 @@ create table Customer(
   customerId int not null unique,
   fName varchar(50),
   lName varchar(50),
-  Dateofbirth varchar(20).
+  dateOfBirth varchar(20),
   Address varchar(50),
   Phone varchar(10),
   primary key (customerId)
@@ -42,7 +42,6 @@ create table Instructor(
 drop table if exists Plan;
 create table Plan(
   planId int not null unique,
-  planName varchar(50),
   Hiretime int,
   fee int,
   primary key (planId)
@@ -57,10 +56,6 @@ create table AddOnService(
   serviceName varchar(255),
   serviceDescription varchar(255),
   primary key (serviceId)
-=======
-serviceId int not null unique,
-primary key (serviceId)
->>>>>>> ad5e3eab6287f56bd639079285ba363683ef4054
 );
 
 -- create equipment table
@@ -77,7 +72,6 @@ create table Equipment(
 drop table if exists Lesson;
 create table Lesson(
   lessonId int not null unique,
-  description varchar(255),
   Level varchar(20),
   fee int,
   primary key (lessonId)
@@ -107,5 +101,4 @@ create table Booking(
   foreign key (instructorId) references Instructor(instructorId),
   foreign key (serviceId) references AddOnService(serviceId),
   foreign key (siteId) references Site(siteId)
-<<<<<<< HEAD
->>>>>>> ad5e3eab6287f56bd639079285ba363683ef4054
+);
