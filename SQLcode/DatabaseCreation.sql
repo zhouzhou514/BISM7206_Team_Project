@@ -2,61 +2,61 @@
 -- remember to drop each table before creating it!!!
 -- see relational data model diagram for more information.
 show full tables;
-select * from testsample;
+
 
 -- create customer table
 drop table if exists Customer;
 create table Customer(
-customerId int,
+customerId int not null unique,
 primary key (customerId)
 );
 
 -- create Staff table
 drop table if exists Staff;
 create table Staff(
-StaffId int,
+StaffId int not null unique,
 primary key (staffId)
 );
 
 -- create Instructor table
 drop table if exists Instructor;
 create table Instructor(
-instructorId int,
+instructorId int not null unique,
 primary key (instructorId)
 );
 
 -- create Plan table
 drop table if exists Plan;
 create table Plan(
-planId int,
+planId int not null unique,
 primary key (planId)
 );
 
 -- create add on service table
 drop table if exists AddOnService;
 create table AddOnService(
-serviceId int,
+serviceId int not null unique,
 primary key (serviceId)
 );
 
 -- create equipment table
 drop table if exists Equipment;
 create table Equipment(
-equipmentId int,
+equipmentId int not null unique,
 primary key (equipmentId)
 );
 
 -- create lesson table
 drop table if exists Lesson;
 create table Lesson(
-lessonId int,
+lessonId int not null unique,
 primary key (lessonId)
 );
 
 -- create site table
 drop table if exists Site;
 create table Site(
-siteId int,
+siteId int not null unique,
 primary key (siteId)
 );
 
@@ -64,12 +64,12 @@ primary key (siteId)
 -- create booking table
 drop table if exists Booking;
 create table Booking(
-bookingId int,
-customerId int, 
-planId int,
+bookingId int not null unique,
+customerId int not null, 
+planId int not null,
 instructorId int,
 serviceId int,
-siteId int,
+siteId int not null,
 primary key (bookingId),
 foreign key (customerId) references customer(customerId),
 foreign key (planId) references plan(planId),
