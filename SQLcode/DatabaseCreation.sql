@@ -7,7 +7,7 @@ show full tables;
 -- create customer table
 drop table if exists Customer;
 create table Customer(
-  customerId int not null unique,
+  customerId char(10) not null unique,
   fName varchar(50),
   lName varchar(50),
   dateOfBirth varchar(20),
@@ -19,7 +19,7 @@ create table Customer(
 -- create Staff table
 drop table if exists Staff;
 create table Staff(
-  StaffId int not null unique,
+  StaffId char(10) not null unique,
   fName varchar(50),
   lName varchar(50),
   City varchar(50),
@@ -32,8 +32,8 @@ create table Staff(
 -- create Instructor table
 drop table if exists Instructor;
 create table Instructor(
-  instructorId int not null unique,
-  staffId int not null,
+  instructorId char(10) not null unique,
+  staffId char(10) not null,
   specialization varchar(50),
   primary key (instructorId),
   foreign key (staffId) references Staff(staffId)
@@ -43,7 +43,7 @@ create table Instructor(
 -- SUP board hire
 drop table if exists Plan;
 create table Plan(
-  planId int not null unique,
+  planId char(10) not null unique,
   Hiretime int,
   fee int,
   primary key (planId)
@@ -53,7 +53,7 @@ create table Plan(
 -- three types of extra services
 drop table if exists AddOnService;
 create table AddOnService(
-  serviceId int not null unique,
+  serviceId char(10) not null unique,
   serviceFee int not null,
   serviceName varchar(255),
   serviceDescription varchar(255),
@@ -63,9 +63,9 @@ create table AddOnService(
 -- create equipment table
 drop table if exists Equipment;
 create table Equipment(
-  equipmentId int not null unique,
+  equipmentId char(10) not null unique,
   equipmentType varchar(50),
-  isallocated bit,
+  isAllocated bit,
   primary key (equipmentId)
 );
 
@@ -73,7 +73,7 @@ create table Equipment(
 -- three different level lessons
 drop table if exists Lesson;
 create table Lesson(
-  lessonId int not null unique,
+  lessonId char(10) not null unique,
   Level varchar(20),
   fee int,
   primary key (lessonId)
@@ -82,7 +82,7 @@ create table Lesson(
 -- create site table
 drop table if exists Site;
 create table Site(
-  siteId int not null unique,
+  siteId char(10) not null unique,
   address varchar(255) not null, 
   primary key (siteId)
 );
@@ -91,12 +91,12 @@ create table Site(
 -- create booking table
 drop table if exists Booking;
 create table Booking(
-  bookingId int not null unique,
-  customerId int not null, 
-  planId int not null,
-  instructorId int,
-  serviceId int,
-  siteId int not null,
+  bookingId char(10) not null unique,
+  customerId char(10) not null, 
+  planId char(10) not null,
+  instructorId char(10),
+  serviceId char(10),
+  siteId char(10) not null,
   primary key (bookingId),
   foreign key (customerId) references customer(customerId),
   foreign key (planId) references plan(planId),
