@@ -62,7 +62,6 @@ create table AddOnService(
   duration int,
   addOnServiceFee int not null,
   addOnServiceDescription varchar(255),
-  lessonId char(10),
   primary key (addOnServiceId)
 );
 
