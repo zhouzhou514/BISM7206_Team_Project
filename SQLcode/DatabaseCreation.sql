@@ -17,17 +17,8 @@ primary key (customerId)
 drop table if exists Staff;
 create table Staff(
 StaffId int not null unique,
-<<<<<<< HEAD
 fName varchar(20) not null,
 lName varchar(20) ,
-=======
-  fName varchar(50),
-  lName varchar(50),
-  City varchar(50),
-  Street varchar(50),
-  Postcode varchar(6),
-  Phone varchar(10),
->>>>>>> 98ace0269f894024d8b4b0e9bbd373a21fc3d028
 primary key (staffId)
 );
 
@@ -35,7 +26,6 @@ primary key (staffId)
 drop table if exists Instructor;
 create table Instructor(
 instructorId int not null unique,
-  specialization varchar(50),
 primary key (instructorId)
 );
 
@@ -93,4 +83,3 @@ foreign key (planId) references plan(planId),
 foreign key (instructorId) references Instructor(instructorId),
 foreign key (serviceId) references AddOnService(serviceId),
 foreign key (siteId) references Site(siteId)
-);
