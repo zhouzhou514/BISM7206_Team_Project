@@ -83,3 +83,4 @@ foreign key (planId) references plan(planId),
 foreign key (instructorId) references Instructor(instructorId),
 foreign key (serviceId) references AddOnService(serviceId),
 foreign key (siteId) references Site(siteId)
+);
