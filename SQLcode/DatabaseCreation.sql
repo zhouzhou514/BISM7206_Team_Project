@@ -33,8 +33,10 @@ create table Staff(
 drop table if exists Instructor;
 create table Instructor(
   instructorId int not null unique,
+  staffId int not null,
   specialization varchar(50),
-  primary key (instructorId)
+  primary key (instructorId),
+  foreign key (staffId) references Staff(staffId)
 );
 
 -- create Plan table
