@@ -8,11 +8,11 @@ show full tables;
 drop table if exists Customer;
 create table Customer(
   customerId char(10) not null unique,
-  fName varchar(50),
+  fName varchar(50) not null,
   lName varchar(50),
   dateOfBirth varchar(20),
   Address varchar(50),
-  Phone varchar(10),
+  Phone varchar(10) not null,
   primary key (customerId)
 );
 
@@ -20,14 +20,14 @@ create table Customer(
 drop table if exists Staff;
 create table Staff(
   StaffId char(10) not null unique,
-  fName varchar(50),
+  fName varchar(50) not null,
   lName varchar(50),
-  position varchar(20),
+  position varchar(20), -- job title
   City varchar(50),
   Street varchar(50),
   Postcode varchar(6),
-  Phone varchar(10),
-  isInstructor bit,
+  Phone varchar(10) not null,
+  isInstructor bit not null,
   primary key (staffId)
 );
 
@@ -41,25 +41,27 @@ create table Instructor(
   foreign key (staffId) references Staff(staffId)
 );
 
--- create Plan table
--- SUP board hire
-drop table if exists Plan;
-create table Plan(
-  planId char(10) not null unique,
+-- create basic service table
+-- such as SUP board hire
+drop table if exists BasicService;
+create table BasicService(
+  basicServiceId char(10) not null unique,
+  basicServiceName varchar(50) not null,
   Hiretime int,
-  fee int,
-  primary key (planId)
+  basicServiceFee int not null,
+  basicServiceDescription varchar(255),
+  primary key (basicServiceId)
 );
 
 -- create add on service table
 -- three types of extra services
 drop table if exists AddOnService;
 create table AddOnService(
-  serviceId char(10) not null unique,
-  serviceFee int not null,
-  serviceName varchar(255),
-  serviceDescription varchar(255),
-  primary key (serviceId)
+  addOnServiceId char(10) not null unique,
+  addOnServiceFee int not null,
+  addOnServiceName varchar(255) not null,
+  addOnServiceDescription varchar(255),
+  primary key (addOnServiceId)
 );
 
 -- create equipment table
@@ -76,8 +78,8 @@ create table Equipment(
 drop table if exists Lesson;
 create table Lesson(
   lessonId char(10) not null unique,
-  Level varchar(20),
-  lessonFee int,
+  lessonName varchar(20),
+  lessonFee int not null,
   primary key (lessonId)
 );
 
@@ -95,11 +97,12 @@ drop table if exists Booking;
 create table Booking(
   bookingId char(10) not null unique,
   customerId char(10) not null, 
-  planId char(10) not null,
+  basicServiceId char(10) not null,
   instructorId char(10),
   serviceId char(10),
   siteId char(10) not null,
   equipmentId char(10),
+  startTime datetime,
   primary key (bookingId),
   foreign key (customerId) references customer(customerId),
   foreign key (planId) references plan(planId),
