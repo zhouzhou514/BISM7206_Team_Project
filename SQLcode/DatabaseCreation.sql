@@ -52,15 +52,10 @@ create table Plan(
 drop table if exists AddOnService;
 create table AddOnService(
   serviceId int not null unique,
-<<<<<<< HEAD
   serviceFee int not null,
   serviceName varchar(255),
   serviceDescription varchar(255),
   primary key (serviceId)
-=======
-  serviceName varchar(20),
-primary key (serviceId)
->>>>>>> 6cec6a2a0f7cae7359729d2baf4ee2e607e4a515
 );
 
 -- create equipment table
