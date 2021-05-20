@@ -15,6 +15,12 @@ primary key (customerId)
 drop table if exists Staff;
 create table Staff(
 StaffId int not null unique,
+  fName varchar(50),
+  lName varchar(50),
+  City varchar(50),
+  Street varchar(50),
+  Postcode varchar(6),
+  Phone varchar(10),
 primary key (staffId)
 );
 
@@ -22,6 +28,7 @@ primary key (staffId)
 drop table if exists Instructor;
 create table Instructor(
 instructorId int not null unique,
+  specialization varchar(50),
 primary key (instructorId)
 );
 
