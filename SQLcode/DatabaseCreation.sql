@@ -62,11 +62,14 @@ drop table if exists Equipment;
 create table Equipment(
   equipmentId char(10) not null unique,
   equipmentType varchar(50),
-  isAllocated bit,
+  isallocated bit(10),
   primary key (equipmentId)
 );
-
-
+/*create trigger tr_eq AFTER UPDATE on Equipment FOR EACH ROW 
+BEGIN
+	RAISEERROR('New Equipment has arrived!', 18, 18)
+END;
+*/
 -- create site table
 drop table if exists Site;
 create table Site(
@@ -84,6 +87,7 @@ create table Booking(
   customerId char(10) not null, 
   instructorId char(10),
   serviceId char(10) not null,
+  numberOfService int,
   siteId char(10) not null,
   equipmentId char(10),
   startTime datetime,
