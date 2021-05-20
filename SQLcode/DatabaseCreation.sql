@@ -38,40 +38,39 @@ create table Instructor(
 );
 
 -- create Plan table
+-- SUP board hire
 drop table if exists Plan;
 create table Plan(
-planId int not null unique,
-primary key (planId)
   planId int not null unique,
-  planName varchar(50),
+  Hiretime int,
+  fee int,
   primary key (planId)
 );
 
 -- create add on service table
+-- three types of extra services
 drop table if exists AddOnService;
 create table AddOnService(
 serviceId int not null unique,
 primary key (serviceId)
-  serviceId int not null unique,
-  serviceFee int not null,
-  serviceName varchar(255),
-  serviceDescription varchar(255),
-  primary key (serviceId)
 );
 
 -- create equipment table
 drop table if exists Equipment;
 create table Equipment(
   equipmentId int not null unique,
-  equipementType varchar(20) not null,
+  equipmentType varchar(50),
+  isallocated bit,
   primary key (equipmentId)
 );
 
 -- create lesson table
+-- three different level lessons
 drop table if exists Lesson;
 create table Lesson(
   lessonId int not null unique,
-  description varchar(255),
+  Level varchar(20),
+  fee int,
   primary key (lessonId)
 );
 
@@ -80,7 +79,6 @@ drop table if exists Site;
 create table Site(
   siteId int not null unique,
   Address varchar(50),
-  address varchar(255) not null, 
   primary key (siteId)
 );
 
@@ -90,7 +88,6 @@ drop table if exists Booking;
 create table Booking(
   bookingId int not null unique,
    customerId int not null, 
-  customerId int not null, 
   planId int not null,
   instructorId int,
   serviceId int,
@@ -101,5 +98,4 @@ create table Booking(
   foreign key (instructorId) references Instructor(instructorId),
   foreign key (serviceId) references AddOnService(serviceId),
   foreign key (siteId) references Site(siteId)
-);
 );
