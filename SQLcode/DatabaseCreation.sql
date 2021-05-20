@@ -47,7 +47,7 @@ drop table if exists BasicService;
 create table BasicService(
   basicServiceId char(10) not null unique,
   basicServiceName varchar(50) not null,
-  Hiretime int,
+  duration int,
   basicServiceFee int not null,
   basicServiceDescription varchar(255),
   primary key (basicServiceId)
@@ -58,9 +58,11 @@ create table BasicService(
 drop table if exists AddOnService;
 create table AddOnService(
   addOnServiceId char(10) not null unique,
-  addOnServiceFee int not null,
   addOnServiceName varchar(255) not null,
+  duration int,
+  addOnServiceFee int not null,
   addOnServiceDescription varchar(255),
+  lessonId char(10),
   primary key (addOnServiceId)
 );
 
@@ -73,15 +75,6 @@ create table Equipment(
   primary key (equipmentId)
 );
 
--- create lesson table
--- three different level lessons
-drop table if exists Lesson;
-create table Lesson(
-  lessonId char(10) not null unique,
-  lessonName varchar(20),
-  lessonFee int not null,
-  primary key (lessonId)
-);
 
 -- create site table
 drop table if exists Site;
@@ -97,17 +90,17 @@ drop table if exists Booking;
 create table Booking(
   bookingId char(10) not null unique,
   customerId char(10) not null, 
-  basicServiceId char(10) not null,
   instructorId char(10),
-  serviceId char(10),
+  basicServiceId char(10) not null,
+  addOnServiceId char(10),
   siteId char(10) not null,
   equipmentId char(10),
   startTime datetime,
   primary key (bookingId),
   foreign key (customerId) references customer(customerId),
-  foreign key (planId) references plan(planId),
   foreign key (instructorId) references Instructor(instructorId),
-  foreign key (serviceId) references AddOnService(serviceId),
+  foreign key (basicServiceId) references BasicService(basicServiceId),
+  foreign key (addOnServiceId) references AddOnService(addOnServiceId),
   foreign key (siteId) references Site(siteId),
   foreign key (equipmentId) references Equipment(equipmentId)
 );
