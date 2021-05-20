@@ -22,10 +22,12 @@ create table Staff(
   StaffId char(10) not null unique,
   fName varchar(50),
   lName varchar(50),
+  position varchar(20),
   City varchar(50),
   Street varchar(50),
   Postcode varchar(6),
   Phone varchar(10),
+  isInstructor bit,
   primary key (staffId)
 );
 
@@ -75,7 +77,7 @@ drop table if exists Lesson;
 create table Lesson(
   lessonId char(10) not null unique,
   Level varchar(20),
-  fee int,
+  lessonFee int,
   primary key (lessonId)
 );
 
@@ -97,10 +99,12 @@ create table Booking(
   instructorId char(10),
   serviceId char(10),
   siteId char(10) not null,
+  equipmentId char(10),
   primary key (bookingId),
   foreign key (customerId) references customer(customerId),
   foreign key (planId) references plan(planId),
   foreign key (instructorId) references Instructor(instructorId),
   foreign key (serviceId) references AddOnService(serviceId),
-  foreign key (siteId) references Site(siteId)
+  foreign key (siteId) references Site(siteId),
+  foreign key (equipmentId) references Equipment(equipmentId)
 );
