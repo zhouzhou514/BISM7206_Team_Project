@@ -10,6 +10,12 @@ create table Customer(
 customerId int not null unique,
 fName varchar(20) not null,
 lName varchar(20) ,
+  customerId int not null unique,
+  fName varchar(50),
+  lName varchar(50),
+  Dateofbirth varchar(20).
+  Address varchar(50),
+  Phone varchar(10),
 primary key (customerId)
 );
 
@@ -19,6 +25,13 @@ create table Staff(
 StaffId int not null unique,
 fName varchar(20) not null,
 lName varchar(20) ,
+  StaffId int not null unique,
+  fName varchar(50),
+  lName varchar(50),
+  City varchar(50),
+  Street varchar(50),
+  Postcode varchar(6),
+  Phone varchar(10),
 primary key (staffId)
 );
 
@@ -26,6 +39,8 @@ primary key (staffId)
 drop table if exists Instructor;
 create table Instructor(
 instructorId int not null unique,
+  instructorId int not null unique,
+  specialization varchar(50),
 primary key (instructorId)
 );
 
