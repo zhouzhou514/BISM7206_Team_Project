@@ -51,7 +51,9 @@ create table Plan(
 -- three types of extra services
 drop table if exists AddOnService;
 create table AddOnService(
-serviceId int not null unique,
+  serviceId int not null unique,
+  serviceName varchar(20),
+  fee int,
 primary key (serviceId)
 );
 
