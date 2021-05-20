@@ -1,0 +1,1 @@
+-- this script import data in to the SWS database
