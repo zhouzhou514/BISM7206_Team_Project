@@ -8,6 +8,8 @@ show full tables;
 drop table if exists Customer;
 create table Customer(
 customerId int not null unique,
+fName varchar(20) not null,
+lName varchar(20) ,
 primary key (customerId)
 );
 
@@ -15,6 +17,8 @@ primary key (customerId)
 drop table if exists Staff;
 create table Staff(
 StaffId int not null unique,
+fName varchar(20) not null,
+lName varchar(20) ,
 primary key (staffId)
 );
 
@@ -43,6 +47,7 @@ primary key (serviceId)
 drop table if exists Equipment;
 create table Equipment(
 equipmentId int not null unique,
+equipementType varchar(20) not null,
 primary key (equipmentId)
 );
 
@@ -50,6 +55,7 @@ primary key (equipmentId)
 drop table if exists Lesson;
 create table Lesson(
 lessonId int not null unique,
+description varchar(255),
 primary key (lessonId)
 );
 
@@ -57,6 +63,7 @@ primary key (lessonId)
 drop table if exists Site;
 create table Site(
 siteId int not null unique,
+address varchar(255) not null, 
 primary key (siteId)
 );
 
