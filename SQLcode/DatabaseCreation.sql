@@ -38,7 +38,7 @@ create table Instructor(
   staffId char(10) not null,
   specialization varchar(50),
   primary key (instructorId),
-  foreign key (staffId) references Staff(staffId)
+  foreign key (staffId) references Staff(staffId) on delete cascade on update cascade
 );
 
 
@@ -75,6 +75,7 @@ create table Site(
 
 
 -- create booking table
+-- if a customer hire a equipment and a add on service, it will generate 2 booking record
 drop table if exists Booking;
 create table Booking(
   bookingId char(10) not null unique,
