@@ -7,14 +7,19 @@ show full tables;
 -- create customer table
 drop table if exists Customer;
 create table Customer(
-customerId int not null unique,
+  customerId int not null unique,
+  fName varchar(50),
+  lName varchar(50),
+  Dateofbirth varchar(20).
+  Address varchar(50),
+  Phone varchar(10),
 primary key (customerId)
 );
 
 -- create Staff table
 drop table if exists Staff;
 create table Staff(
-StaffId int not null unique,
+  StaffId int not null unique,
   fName varchar(50),
   lName varchar(50),
   City varchar(50),
@@ -27,7 +32,7 @@ primary key (staffId)
 -- create Instructor table
 drop table if exists Instructor;
 create table Instructor(
-instructorId int not null unique,
+  instructorId int not null unique,
   specialization varchar(50),
 primary key (instructorId)
 );
