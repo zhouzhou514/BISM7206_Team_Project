@@ -41,29 +41,19 @@ create table Instructor(
   foreign key (staffId) references Staff(staffId)
 );
 
+
 -- create basic service table
--- such as SUP board hire
-drop table if exists BasicService;
-create table BasicService(
-  basicServiceId char(10) not null unique,
-  basicServiceName varchar(50) not null,
+--  equipment hiring and any kinds of lesson are considered as service
+drop table if exists Service;
+create table Service(
+  ServiceId char(10) not null unique,
+  ServiceName varchar(50) not null,
   duration int,
-  basicServiceFee int not null,
-  basicServiceDescription varchar(255),
-  primary key (basicServiceId)
+  ServiceFee int not null,
+  ServiceDescription varchar(255),
+  primary key (ServiceId)
 );
 
--- create add on service table
--- three types of extra services
-drop table if exists AddOnService;
-create table AddOnService(
-  addOnServiceId char(10) not null unique,
-  addOnServiceName varchar(255) not null,
-  duration int,
-  addOnServiceFee int not null,
-  addOnServiceDescription varchar(255),
-  primary key (addOnServiceId)
-);
 
 -- create equipment table
 drop table if exists Equipment;
@@ -90,16 +80,14 @@ create table Booking(
   bookingId char(10) not null unique,
   customerId char(10) not null, 
   instructorId char(10),
-  basicServiceId char(10) not null,
-  addOnServiceId char(10),
+  ServiceId char(10) not null,
   siteId char(10) not null,
   equipmentId char(10),
   startTime datetime,
   primary key (bookingId),
   foreign key (customerId) references customer(customerId),
   foreign key (instructorId) references Instructor(instructorId),
-  foreign key (basicServiceId) references BasicService(basicServiceId),
-  foreign key (addOnServiceId) references AddOnService(addOnServiceId),
+  foreign key (ServiceId) references Service(ServiceId),
   foreign key (siteId) references Site(siteId),
   foreign key (equipmentId) references Equipment(equipmentId)
 );
